@@ -1,35 +1,37 @@
-import React from "react";
-import "./assets/css/bootstrap.min.css";
-import Main from "./components/Main/Main";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NormalComplaintList from "./components/Complaints/NormalComplaintList";
-import LoginPage from "./components/Login/LoginPage";
-import ViewNormalComplaint from "./components/Complaints/ViewNormalComplaint"
-import AccidentComplaintList from "./components/Complaints/AccidentComlaintList";
-import ViewAccidentComplaint from "./components/Complaints/ViewAccidentComplaint"
-import NoneRegisterCompalintList from "./components/Complaints/NoneRegisterCompalintList"
-import ViewNoneRegisterComplaint from "./components/Complaints/ViewNoneRegisterComplaint"
-import AnonymousComplaintList from  "./components/Complaints/AnonymousComplaintList"
-import ViewAnonymousComplaint from "./components/Complaints/ViewAnonymousComplaint"
-import Register from "./components/Login/Register";
+import React from 'react';
+import './App.css';
+import Home from './Pages/Home/Home';
+import { Fragment,useState } from 'react';
+import { BrowserRouter,Route,Routes} from 'react-router-dom';
+import Register from './Pages/Register/Signup';
+import Header from './Pages/Menu/HeaderBar/Header';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Complaint from './Pages/Complaint/Normal/Complaint';
+import Anonymous from './Pages/Complaint/Anonymous/Anonymous';
+import AccidentComplaint  from './Pages/Complaint/Accident/AccidentComplaint';
+import NoneRegisterComplaint from './Pages/Complaint/NonRegister/NoneRegisterComplaint';
+import Login from './Pages/Register/Login'
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
-        <Route path="/Main" element={<Main />}></Route>
-        <Route path="/NormalComplaintList" element={<NormalComplaintList />}></Route>
-        <Route path="/ViewNormalComplaint/:id" element={<ViewNormalComplaint />}></Route>
-        <Route path="/AccidentComplaintList" element={<AccidentComplaintList />}></Route>
-        <Route path="/ViewAccidentComplaint/:id" element={<ViewAccidentComplaint />}></Route>
-        <Route path="/NoneRegisterCompalintList" element={<NoneRegisterCompalintList />}></Route>
-        <Route path="/ViewNoneRegisterComplaint/:id" element={<ViewNoneRegisterComplaint />}></Route>
-        <Route path="/AnonymousComplaintList" element={<AnonymousComplaintList />}></Route>
-        <Route path="/ViewAnonymousComplaint/:id" element={<ViewAnonymousComplaint />}></Route>
-        <Route path="/Register" element={<Register />}></Route>
-        
-      </Routes>
+    <Header/>
+    <Routes>
+      <Route path='/' element={<Home/>}></Route>
+      <Route path='/Home' element={<Home/>}></Route>
+      <Route path='/NormalComplaint/' element={<Complaint/>}></Route>
+      <Route path='/AnonymousComplaint' element={<Anonymous/>}></Route>
+      <Route path='/AccidentComplaintComplaint' element={<AccidentComplaint/>}></Route>
+      <Route path='/NoneRegisterComplaint' element={<NoneRegisterComplaint/>}></Route>
+      <Route path='/Register' element={<Register/>}></Route>
+      <Route path='/Login' element={<Login/>}></Route>
+    </Routes>
+      {/* <Fragment>
+        <Header/>
+        <Routes>
+          <Route exact path='/' element={< Register />}/>
+        </Routes>
+      </Fragment> */}
     </BrowserRouter>
   );
 }
